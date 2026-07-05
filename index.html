@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Music Player</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- jsmediatags reads ID3 tags (title, artist, cover art) straight from the mp3 file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+</head>
+<body>
+
+<!-- Full-screen background visualizer, reacts to whatever is currently playing -->
+<canvas id="visualizer"></canvas>
+
+<div class="music-player">
+
+    <h2>Music Player</h2>
+
+    <!-- Load songs from your computer (e.g. your "songs" folder) -->
+    <label for="fileInput" class="load-btn">
+        <i class="fa-solid fa-folder-open"></i> Load Songs
+    </label>
+    <input type="file"
+           id="fileInput"
+           accept="audio/*"
+           multiple
+           hidden>
+
+    <!-- Song Cover -->
+    <img src="" id="cover" class="cover" alt="Album cover">
+
+    <!-- Song Details -->
+    <h3 id="title">No song loaded</h3>
+    <p id="artist">Click "Load Songs" to begin</p>
+
+    <!-- Audio -->
+    <audio id="audio"></audio>
+
+    <!-- Time -->
+    <div class="time">
+        <span id="currentTime">0:00</span>
+        <span id="duration">0:00</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <input type="range"
+           id="progress"
+           value="0"
+           min="0"
+           max="100">
+
+    <!-- Controls -->
+    <div class="controls">
+
+        <button id="prev" aria-label="Previous song">
+            <i class="fa-solid fa-backward"></i>
+        </button>
+
+        <button id="play" aria-label="Play or pause">
+            <i class="fa-solid fa-play"></i>
+        </button>
+
+        <button id="next" aria-label="Next song">
+            <i class="fa-solid fa-forward"></i>
+        </button>
+
+    </div>
+
+    <!-- Volume -->
+    <div class="volume">
+
+        <label for="volume">Volume</label>
+
+        <input type="range"
+               id="volume"
+               min="0"
+               max="100"
+               value="100">
+
+    </div>
+
+    <!-- Playlist -->
+    <h3>Playlist</h3>
+
+    <ul id="playlist">
+        <li class="empty-state">No songs yet — click "Load Songs" above</li>
+    </ul>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
